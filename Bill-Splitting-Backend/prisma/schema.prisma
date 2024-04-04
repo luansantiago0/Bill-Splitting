@@ -1,0 +1,18 @@
+// Define o generator para criar o cliente Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define a fonte de dados, neste caso, um banco de dados PostgreSQL
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // URL de conexão com o banco de dados, geralmente definida em uma variável de ambiente
+}
+
+// Define o modelo User, representando um usuário na aplicação
+model User {
+  id         Int          @id @default(autoincrement()) // Define o campo de ID como chave primária
+  email      String       @unique // Define o campo de e-mail como único
+  password   String       // Define o campo de senha
+}
+
